@@ -1,0 +1,708 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>{ 제트 설치/접속 및 사용법 안내문 }</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+</style></head><body><article id="5aabe5ff-47b5-4c4a-9c45-1352ed53266a" class="page sans"><header><h1 class="page-title"><a href="https://shorturl.at/eotwL">{ 제트 설치/접속 및 사용법 안내문 }</a></h1><p class="page-description"></p></header><div class="page-body"><h1 id="13a3350f-14d0-40f3-bd0f-b334161146c7" class="">=== 목차 ===</h1><p id="1cfad47c-7d1d-4c92-8ffb-a86f4945fc15" class="">
+</p><nav id="7ab9c9ba-c1c9-4c9e-b3c4-c09baae80c26" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#13a3350f-14d0-40f3-bd0f-b334161146c7">=== 목차 ===</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6c2770e2-82fa-4c61-81f6-8844b33e5e76">===<mark class="highlight-red"> 제트</mark> 설치 안내 === </a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e4313d24-f451-4ca2-9319-77dcee32ca28"><mark class="highlight-yellow_background">&lt; [A] ‘설치 제트’ 설치하는 방법 &gt;</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#96701be7-af35-48c9-9998-6602fac3460b">1. <mark class="highlight-yellow_background">아래의 주소를 눌러서 접속</mark>하신 후</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d3acfc49-a0a3-4300-be37-630b44af052f">2. 제트 다운로드(쌰짜이) 를 눌러서 쌰짜이 해주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fb020a7b-a96a-43b9-9460-a5079c3cc186">3. 다운로드(<strong>쌰짜이)가 완료된 파일을 찾아서 설치(안장)해주세요.</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#db592549-d97d-462e-bd73-bca7e2cd75f8"><mark class="highlight-yellow_background">&lt; [B] ‘설치 제트’ 실행 및 접속 방법 &gt;</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c6349a7b-0c1c-4c38-86a0-fccfa0703ac4">1. 설치(안장)된 제트(Zulip)를 찾아서 실행해주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#42b5704a-5902-4c79-b25c-7c4f7b54a494">2. hadr을 ‘영어’로 입력해주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d3f659bd-1b5b-4e7a-bcc1-c3318f65e214">3. https://hadr.zulipchat.com/ 를 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd59434a-8aae-4441-844c-4d1893c374ca">4. 자물쇠를 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a213a2ee-b71f-4864-8556-eef6b585707b">5. 팀장/실장님으<strong>로부터 전달받은 </strong><mark class="highlight-blue_background"><strong>이메일</strong></mark><strong>과 </strong><mark class="highlight-blue_background"><strong>비밀번호</strong></mark><strong>를 빈칸에 입력합니다.</strong></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#409caea0-c1b5-47e4-8b17-30a4d734f3f3"><mark class="highlight-yellow_background">&lt; </mark><mark class="highlight-yellow_background"><strong>[C] ‘설치 제트’ 사용법 &gt;</strong></mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9de47f84-f36e-4208-b05e-a5352a2dc0f0">※ 글 주제 선택하는 방법</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9ad3a9de-0c8c-4c2e-b512-47c4f8dbcd71">※ 글 수정/삭제하는 방법</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#db4116c5-5a4b-4d5d-8366-407a12dc01eb">1. 수정/삭제할 글의 빈 칸을 꾸욱 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#1ae5479f-b176-49f9-b36d-50cc4217a4d2">2. 글 수정하기/삭제하기를 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#111c4c3e-b12f-4568-bd5d-7a6b20f159d2">※ 말씀 녹음 올리는 방법</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#d4a7740f-924a-4285-85d7-a1802f521a9d">1. 녹음기 앱에 녹음된 음성 파일을 꾹 누른 다음, 공유(<strong>分享, 분장)</strong>를 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#499c3cb9-3046-4ea7-8ed0-7653436059a5">2. 제트를 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a30a708e-72de-45f8-91df-8849b52c7263">3. 첫 번째 빈 칸을 눌러서 ‘?호방 (?)’을 선택하고, 두 번째 빈 칸을 눌러서 ‘말씀’을 선택해주세요. </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#151c90cd-15bc-4834-b049-82d4399453e2">※ 글 복사하는 방법</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#e2cbf007-9e68-4e2d-8379-6f0320a6ff6a">1. 복사할 글의 빈 칸을 꾸욱 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#ea6d0141-a5cf-4218-9526-2561d2330935">2. 복사하기를 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4021c192-692b-4cd7-bdef-856398f075cd">3. 복사한 글을 올릴 방을 찾아가서 글 쓰는 칸을 누르세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#84e5f3c7-cc0d-4ae9-959e-04e1fdd85c4e">4. 복사한 글을 올릴 주제를 선택하세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#a4a7dcb0-859b-4598-ba0e-1a4889507911">5. 글 쓰는 칸을 꾸욱 눌러서 붙여넣기를 누르세요.</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#66509b15-370d-4233-891f-d32c6bd91f2c">6. 전송을 눌러주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d7cab598-5af3-42f2-b3c9-baa39558200a">=== 줌 설치 안내 ===</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#34897bbe-873c-4504-bfef-884324e18674">줌 설치 주소 (~2023.11.21)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f4ffa4fa-7b5b-4578-9a1e-44ed6ef146d2">1. <mark class="highlight-yellow_background">아래의 주소를 눌러서 접속</mark>하신 후</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#07468ee5-8eee-46e6-9a84-fc4561bfd0ba">2. 줌 다운로드(쌰짜이) 를 눌러서 쌰짜이 해주세요.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#653e4065-ab46-4f0b-aa7d-a253ce97b86a">3. 다운로드(<strong>쌰짜이)가 완료된 파일을 찾아서 설치(안장)해주세요.</strong></a></div></nav><p id="7a1a3ef1-1bbb-430d-b0a7-a23b2f5d69b3" class="">
+</p><p id="ee51077f-c1ff-4173-a2e6-4435384ebfab" class="">
+</p><hr id="19e8c940-65a6-4551-b424-8ca10ff1d1d8"/><hr id="d7f056e2-d077-45f7-a55a-e0cd865c3992"/><h1 id="6c2770e2-82fa-4c61-81f6-8844b33e5e76" class="">===<mark class="highlight-red"> 제트</mark> 설치 안내 === </h1><p id="3b1a6197-4846-494c-941a-878d83985852" class="">
+</p><hr id="0e38dbc8-1757-40a7-ab9d-e178afd11c5d"/><h1 id="e4313d24-f451-4ca2-9319-77dcee32ca28" class=""><mark class="highlight-yellow_background">&lt; [A] ‘설치 제트’ 설치하는 방법 &gt;</mark></h1><p id="891cddd2-7b8d-4c57-98b6-61c093df7304" class="">
+</p><h3 id="96701be7-af35-48c9-9998-6602fac3460b" class="">1. <mark class="highlight-yellow_background">아래의 주소를 눌러서 접속</mark>하신 후</h3><p id="f0f69010-bdc8-412b-9fd8-3df22542fcf1" class=""><a href="https://shorturl.at/fxBEJ">https://shorturl.at/fxBEJ</a></p><figure id="05615b52-ef45-4dd8-8d6c-7e648246ab0e"><a href="https://shorturl.at/fxBEJ" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">임시 안내</div></div><div class="bookmark-href">https://shorturl.at/fxBEJ</div></div></a></figure><p id="8f4734ac-77f6-4b26-a8af-5bab393ce1c6" class="">
+</p><h3 id="d3acfc49-a0a3-4300-be37-630b44af052f" class="">2. 제트 다운로드(쌰짜이) 를 눌러서 쌰짜이 해주세요.</h3><p id="a1c4e742-5397-47e6-99ea-30d40df2d57e" class="">
+</p><h3 id="fb020a7b-a96a-43b9-9460-a5079c3cc186" class="">3. 다운로드(<strong>쌰짜이)가 완료된 파일을 찾아서 설치(안장)해주세요.</strong></h3><p id="c012f76e-eaad-4038-a2c3-b0ee969d60c5" class="">
+</p><p id="eee0083d-9324-490d-8940-215e6d0c93eb" class="">
+</p><p id="80df9470-0634-45cf-a0b8-b0098ce99740" class="">
+</p><hr id="979ba478-b83a-48ee-9f44-9a1d46b82a88"/><h1 id="db592549-d97d-462e-bd73-bca7e2cd75f8" class=""><mark class="highlight-yellow_background">&lt; [B] ‘설치 제트’ 실행 및 접속 방법 &gt;</mark></h1><h3 id="c6349a7b-0c1c-4c38-86a0-fccfa0703ac4" class="">1. 설치(안장)된 제트(Zulip)를 찾아서 실행해주세요.</h3><figure id="fead3d74-8f86-4268-8c5c-56cdf86fde72" class="image"><a href="img/Untitled.png"><img style="width:409px" src="img/Untitled.png"/></a></figure><p id="7ccd72d7-5891-4df5-8a64-e88e5dec139c" class="">
+</p><h3 id="42b5704a-5902-4c79-b25c-7c4f7b54a494" class="">2. hadr을 ‘영어’로 입력해주세요.</h3><figure id="17d364b3-d936-406d-96ab-fe8b95854631" class="image"><a href="img/Untitled%201.png"><img style="width:409px" src="img/Untitled%201.png"/></a></figure><h3 id="d3f659bd-1b5b-4e7a-bcc1-c3318f65e214" class="">3. https://hadr.zulipchat.com/ 를 눌러주세요.</h3><figure id="2deaac13-3b75-4809-a803-9e6ecc975429" class="image"><a href="img/Untitled%202.png"><img style="width:409px" src="img/Untitled%202.png"/></a></figure><p id="02b32497-ce6c-4854-aaed-7de7b9c33d46" class="">
+</p><h3 id="fd59434a-8aae-4441-844c-4d1893c374ca" class="">4. 자물쇠를 눌러주세요.</h3><figure id="cfaf553a-27fe-412a-bf4b-d77125a9cb7f" class="image"><a href="img/Untitled%203.png"><img style="width:409px" src="img/Untitled%203.png"/></a></figure><p id="b01a4870-3983-4836-8fc2-2a40a3bb6030" class="">
+</p><h3 id="a213a2ee-b71f-4864-8556-eef6b585707b" class="">5. 팀장/실장님으<strong>로부터 전달받은 </strong><mark class="highlight-blue_background"><strong>이메일</strong></mark><strong>과 </strong><mark class="highlight-blue_background"><strong>비밀번호</strong></mark><strong>를 빈칸에 입력합니다.</strong></h3><figure id="408d505e-0a23-4390-b735-2790e9bdb509" class="image"><a href="img/Untitled%204.png"><img style="width:409px" src="img/Untitled%204.png"/></a></figure><blockquote id="6a9d2bee-b040-4b5f-bfaf-ca6d6888adb5" class="">⚠️ 자판기에서 <mark class="highlight-red">@</mark>(골뱅이)하고 <mark class="highlight-red">.</mark>(점)을 입력할 줄 알아야 합니다!</blockquote><p id="7992ef70-8624-4821-8dde-3acfa0c235d7" class="">
+</p><p id="551b7259-37cc-4947-ac2e-4162fbc6c319" class="">
+</p><p id="89fc7090-1b3c-4370-8653-dcc534f3d2bf" class="">
+</p><hr id="925a0778-89b0-4291-83ce-0a6279893d65"/><h1 id="409caea0-c1b5-47e4-8b17-30a4d734f3f3" class=""><mark class="highlight-yellow_background">&lt; </mark><mark class="highlight-yellow_background"><strong>[C] ‘설치 제트’ 사용법 &gt;</strong></mark></h1><h2 id="9de47f84-f36e-4208-b05e-a5352a2dc0f0" class="">※ 글 주제 선택하는 방법</h2><p id="83e4ee73-c8f7-4161-8d8b-8dafac0dd157" class="">(작성중)</p><p id="f8e3afb8-a8f3-4e8b-9ed4-1daa6d27fe00" class="">
+</p><h2 id="9ad3a9de-0c8c-4c2e-b512-47c4f8dbcd71" class="">※ 글 수정/삭제하는 방법</h2><h3 id="db4116c5-5a4b-4d5d-8366-407a12dc01eb" class="">1. 수정/삭제할 글의 빈 칸을 꾸욱 눌러주세요.</h3><blockquote id="e8087c09-6fa4-46d2-a622-ecf05ff689cb" class="">⚠️ <strong>본인이 작성한 글</strong>만 수정/삭제 가능합니다.</blockquote><figure id="af4d6b84-7afc-4553-a013-9e106bb0b52e" class="image"><a href="img/Untitled%205.png"><img style="width:409px" src="img/Untitled%205.png"/></a></figure><p id="462f410b-5ba4-4c62-a91b-6d44436d0dda" class="">
+</p><h3 id="1ae5479f-b176-49f9-b36d-50cc4217a4d2" class="">2. 글 수정하기/삭제하기를 눌러주세요.</h3><figure id="c3b9147e-8840-4300-b16d-989d8502d37c" class="image"><a href="img/Untitled%206.png"><img style="width:415px" src="img/Untitled%206.png"/></a></figure><p id="12054767-7fdd-49b6-84f4-f84fc401a8d5" class="">
+</p><h2 id="111c4c3e-b12f-4568-bd5d-7a6b20f159d2" class="">※ 말씀 녹음 올리는 방법</h2><h3 id="d4a7740f-924a-4285-85d7-a1802f521a9d" class="">1. 녹음기 앱에 녹음된 음성 파일을 꾹 누른 다음, 공유(<strong>分享, 분장)</strong>를 눌러주세요.</h3><p id="1dac85f8-c102-4e49-a94f-493e908ba95c" class="">
+</p><p id="2d586420-c7ba-48a3-8890-999425017e5a" class="">
+</p><h3 id="499c3cb9-3046-4ea7-8ed0-7653436059a5" class="">2. 제트를 눌러주세요.</h3><figure id="3cd50d44-1387-4592-9f7d-76bd1846f76b" class="image"><a href="img/Untitled%207.png"><img style="width:1080px" src="img/Untitled%207.png"/></a></figure><p id="52e3d783-d5d3-4be8-9c2b-60e2ebe27b67" class="">
+</p><h3 id="a30a708e-72de-45f8-91df-8849b52c7263" class="">3. 첫 번째 빈 칸을 눌러서 ‘?호방 (?)’을 선택하고, 두 번째 빈 칸을 눌러서 ‘말씀’을 선택해주세요. </h3><figure id="9f43c84f-1c88-4c7a-86c0-8edf7d104a1b" class="image"><a href="img/Untitled%208.png"><img style="width:1080px" src="img/Untitled%208.png"/></a></figure><p id="5ad295b4-1037-4759-b2c9-450aa2502a43" class="">
+</p><h2 id="151c90cd-15bc-4834-b049-82d4399453e2" class="">※ 글 복사하는 방법</h2><h3 id="e2cbf007-9e68-4e2d-8379-6f0320a6ff6a" class="">1. 복사할 글의 빈 칸을 꾸욱 눌러주세요.</h3><figure id="79b6acfa-10c5-4b52-a2eb-c3192bca2842" class="image"><a href="img/Untitled%209.png"><img style="width:409px" src="img/Untitled%209.png"/></a></figure><h3 id="ea6d0141-a5cf-4218-9526-2561d2330935" class="">2. 복사하기를 눌러주세요.</h3><figure id="b819187c-4055-49e7-9c96-d17d34b780ce" class="image"><a href="img/Untitled%2010.png"><img style="width:415px" src="img/Untitled%2010.png"/></a></figure><h3 id="4021c192-692b-4cd7-bdef-856398f075cd" class="">3. 복사한 글을 올릴 방을 찾아가서 글 쓰는 칸을 누르세요.</h3><figure id="ab4db86d-d54b-4102-bc72-d14cd4f9c814" class="image"><a href="img/Untitled%2011.png"><img style="width:409px" src="img/Untitled%2011.png"/></a></figure><p id="47a67969-84aa-4613-a689-04b0c1bdb688" class="">
+</p><h3 id="84e5f3c7-cc0d-4ae9-959e-04e1fdd85c4e" class="">4. 복사한 글을 올릴 주제를 선택하세요.</h3><figure id="bd41c8aa-04df-44b2-a588-0fc7cfe3e16a" class="image"><a href="img/Untitled%2012.png"><img style="width:409px" src="img/Untitled%2012.png"/></a></figure><p id="62c5c12f-32d6-4c2f-aa39-495dd832681e" class="">
+</p><h3 id="a4a7dcb0-859b-4598-ba0e-1a4889507911" class="">5. 글 쓰는 칸을 꾸욱 눌러서 붙여넣기를 누르세요.</h3><figure id="ac19e2a2-0e48-4ec1-bfb0-c02333faef73" class="image"><a href="img/Untitled%2013.png"><img style="width:409px" src="img/Untitled%2013.png"/></a></figure><p id="6004f368-1a7a-4311-afac-ad9e766fba2b" class="">
+</p><h3 id="66509b15-370d-4233-891f-d32c6bd91f2c" class="">6. 전송을 눌러주세요.</h3><figure id="a8661b0c-7886-4cca-b97e-8b742e55bb5f" class="image"><a href="img/Untitled%2014.png"><img style="width:409px" src="img/Untitled%2014.png"/></a></figure><p id="f8a40f9b-bcfb-4a12-a990-646af008f306" class="">
+</p><hr id="fe6f0881-80a6-4a8f-8211-511b8be0a4a8"/><hr id="baf82576-7c08-4aee-9b7a-7b898c33cc43"/><h1 id="d7cab598-5af3-42f2-b3c9-baa39558200a" class="">=== 줌 설치 안내 ===</h1><h1 id="34897bbe-873c-4504-bfef-884324e18674" class="">줌 설치 주소 (~2023.11.21)</h1><p id="64b46e3c-8ef2-4bb9-b70e-07a21c90e994" class="">
+</p><h3 id="f4ffa4fa-7b5b-4578-9a1e-44ed6ef146d2" class="">1. <mark class="highlight-yellow_background">아래의 주소를 눌러서 접속</mark>하신 후</h3><p id="6beb649f-654c-4c01-a669-b02ab1428ac5" class=""><a href="https://shorturl.at/fxBEJ">https://shorturl.at/fxBEJ</a></p><figure id="7da569f7-d8be-4b1e-b6c3-fe20d4f4346f"><a href="https://shorturl.at/fxBEJ" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">임시 안내</div></div><div class="bookmark-href">https://shorturl.at/fxBEJ</div></div></a></figure><p id="45f71560-de16-451c-b196-1c451a8ba5dd" class="">
+</p><h3 id="07468ee5-8eee-46e6-9a84-fc4561bfd0ba" class="">2. 줌 다운로드(쌰짜이) 를 눌러서 쌰짜이 해주세요.</h3><p id="70b10066-fd50-4bbb-963c-ad9c8d45242f" class="">
+</p><h3 id="653e4065-ab46-4f0b-aa7d-a253ce97b86a" class="">3. 다운로드(<strong>쌰짜이)가 완료된 파일을 찾아서 설치(안장)해주세요.</strong></h3><p id="e48b508b-dea2-4465-8311-9fed77e1fd25" class="">
+</p><p id="b98ef25c-ecec-453f-84b2-9386518fa80a" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
